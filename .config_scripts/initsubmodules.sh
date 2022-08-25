@@ -13,7 +13,9 @@ wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 
 REPO=aarontrowbridge/ohmyzsh KEEP_ZSHRC=yes sh install.sh
 
-rm install.zsh
+git submodule sync
+
+rm install.sh
 
 # change dir to .oh-my-zsh
 
