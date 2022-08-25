@@ -3,25 +3,21 @@
 
 # change dir to home to add first layer of submodules
 
-cd $HOME
-
 set -e
 
-git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
-    while read path_key local_path
-    do
-        url_key=$(echo $path_key | sed 's/\.path/.url/')
-        url=$(git config -f .gitmodules --get "$url_key")
-        git submodule add -f $url $local_path
-    done
+cd $HOME
+
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+
+REPO=aarontrowbridge/ohmyzsh KEEP_ZSHRC=yes sh install.sh
+
+rm install.zsh
 
 # change dir to .oh-my-zsh
 
-cd -
+cd - 
 
 cd ~/.oh-my-zsh
-
-set -e
 
 git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
     while read path_key local_path
@@ -33,5 +29,4 @@ git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
     done
 
 cd -
-
 
