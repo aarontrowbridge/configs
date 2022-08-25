@@ -7,6 +7,8 @@ set -e
 
 cd $HOME
 
+rm -rf .oh-my-zsh
+
 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 
 REPO=aarontrowbridge/ohmyzsh KEEP_ZSHRC=yes sh install.sh
