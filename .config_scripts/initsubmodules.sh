@@ -9,7 +9,7 @@ cd $HOME
 
 rm -rf .oh-my-zsh
 
-git submodule add https://github.com/aarontrowbridge/ohmyzsh .oh-my-zsh
+git submodule add -f https://github.com/aarontrowbridge/ohmyzsh .oh-my-zsh
 
 chsh -s $(which zsh)
 
