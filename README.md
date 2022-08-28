@@ -20,9 +20,15 @@ git fetch
 git switch -f main
 ```
 
+4. optionally switch to personal branch, e.g.
+```
+git switch -c me
+```
+
 4. run script to recursively add submodules
 ```
 sh ~/.config_scripts/initsubmodules.sh
 ```
 5. knock on wood that this works (script is currently pretty hacky)
+
 
