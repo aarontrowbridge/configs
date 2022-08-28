@@ -2,7 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # add JILL.py loc to path
-export PATH=$PATH:$HOME/.local/bin
+# export PATH=$HOME/.local/bin:$PATH
+[[ ":$PATH:" != *":$HOME/.local/bin"* ]] && PATH=$HOME/.local/bin:$PATH
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -76,9 +78,9 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
    git 
+   zsh-vi-mode
    zsh-autosuggestions 
    zsh-syntax-highlighting 
-   zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -133,5 +135,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
