@@ -11,6 +11,7 @@ rm -rf .oh-my-zsh
 
 git submodule add -f https://github.com/aarontrowbridge/ohmyzsh .oh-my-zsh
 
+sudo sh -c "echo $(which zsh) >> /etc/shells"
 chsh -s $(which zsh)
 
 # change dir to .oh-my-zsh
