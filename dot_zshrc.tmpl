@@ -1,0 +1,64 @@
+# add local bin to path
+[[ ":$PATH:" != *":$HOME/.local/bin"* ]] && PATH=$HOME/.local/bin:$PATH
+
+# oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="aaron"
+
+zstyle ':omz:update' mode auto
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(
+   git
+   zsh-vi-mode
+   zsh-autosuggestions
+   zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# editor
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+  export VISUAL='vim'
+else
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+fi
+
+# aliases
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias j="julia"
+alias r="ranger"
+alias v="nvim"
+alias btm="bottom"
+{{- if eq .chezmoi.os "linux" }}
+alias aptup="sudo apt full-upgrade"
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+
+# >>> conda initialize >>>
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+
+# >>> juliaup initialize >>>
+path=('/Users/aaron/.juliaup/bin' $path)
+export PATH
+# <<< juliaup initialize <<<
+{{- end }}

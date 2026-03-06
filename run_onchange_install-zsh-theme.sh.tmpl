@@ -1,0 +1,9 @@
+#!/bin/bash
+# Install custom oh-my-zsh theme
+# hash: {{ include "aaron.zsh-theme" | sha256sum }}
+
+mkdir -p "$HOME/.oh-my-zsh/custom/themes"
+
+cat > "$HOME/.oh-my-zsh/custom/themes/aaron.zsh-theme" << 'THEME'
+{{ include "aaron.zsh-theme" }}
+THEME
