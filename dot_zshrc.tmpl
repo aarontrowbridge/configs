@@ -41,7 +41,7 @@ alias aptup="sudo apt full-upgrade"
 {{- if eq .chezmoi.os "linux" }}
 
 # >>> conda initialize >>>
-__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -55,10 +55,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 {{- end }}
 
-{{- if eq .chezmoi.os "darwin" }}
-
 # >>> juliaup initialize >>>
-path=('/Users/aaron/.juliaup/bin' $path)
+path=("$HOME/.juliaup/bin" $path)
 export PATH
 # <<< juliaup initialize <<<
-{{- end }}
